@@ -3,21 +3,45 @@
 Character::Character(string description) {
 	this->description = description;
 }
+
 void Character::addItems(Item *item) {
     itemsInCharacter.push_back(*item);
 }
+//------------------------------------------putITEMS------------------------------------------
 void Character::putItems(Item *item) {
-    itemsInCharacter.push_back(*item);
-    delete item;
+    int location = getItemIndex(item);
+    if (location == -1){
+        cout << "item is not here" << endl;
+    }
+    else{ // Removing choosen item from character
+        itemsInCharacter.erase(itemsInCharacter.begin()+location);
+    }
 }
+//------------------------------------------getItemINDEX------------------------------------------
+int Character::getItemIndex(Item *item){
+    string name = item->getShortDescription();
+    int size = itemsInCharacter.size();
+    for (int i = 0; i < size; i++){
+        if(itemsInCharacter[i].getShortDescription().compare(name) == 0)
+            return i;
+    }
+    return -1;
+}
+
+//------------------------------------------hasITEM------------------------------------------
+// Character having an Item
+Item Character::hasItem(string name){
+    for (Item i : itemsInCharacter)
+        if(i.getShortDescription().compare(name) == 0)
+            return i;
+    Item* temp = new Item("Nothing");
+    return *temp;
+}
+
 string Character::printInventory()
 {
-  string ret = this->description;
-  ret += "\n Item list:\n";
-  for (vector<Item>::iterator i = itemsInCharacter.begin(); i != itemsInCharacter.end(); i++)
-    ret += "\t"+ (*i).getLongDescription() + "\n";
-    // getLongDescription in Item.cpp
-  return ret;
+  for (Item i : itemsInCharacter)
+    cout << (i).getShortDescription() << endl;
 }
 
 
