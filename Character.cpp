@@ -37,11 +37,12 @@ Item Character::hasItem(string name){
     Item* temp = new Item("Nothing");
     return *temp;
 }
-
+//------------------------------------------printINVENTORY------------------------------------------
 string Character::printInventory()
 {
   for (Item i : itemsInCharacter)
     cout << (i).getShortDescription() << endl;
+  return "";
 }
 
 

@@ -159,7 +159,7 @@ bool ZorkUL::processCommand(Command command) {
             Item itemToPut = theCharacter->hasItem(command.getSecondWord());
             // Item no there
             if(itemToPut.getShortDescription().compare("Nothing") == 0){
-            cout << "You don't have items" << endl;
+            cout << "You don't have that particular item... ;(" << endl;
             cout << currentRoom->longDescription() << endl;
             }
             // Item there and being put
