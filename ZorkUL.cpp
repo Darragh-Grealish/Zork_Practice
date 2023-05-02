@@ -10,7 +10,15 @@ int main(int argc, char *argv[]) {
 }
 
 ZorkUL::ZorkUL() {
-	createRooms();
+    createRooms();
+// Creating instance of character
+    createCharacter();
+}
+// Instance of Character Darragh
+void ZorkUL::createCharacter(){
+    Character *Darragh;
+    Darragh = new Character("Darragh");
+    theCharacter = Darragh;
 }
 
 void ZorkUL::createRooms()  {
@@ -127,6 +135,10 @@ bool ZorkUL::processCommand(Command command) {
             cout << "item is in room" << endl;
              cout << "index number " << + location << endl;
             cout << endl;
+             // Character can take up items
+            Item* currentItem = currentRoom->getItemFromRoom(location);
+            theCharacter->addItems(currentItem);
+            currentRoom->removeItemFromRoom(location);
             cout << currentRoom->longDescription() << endl;
         }
     }

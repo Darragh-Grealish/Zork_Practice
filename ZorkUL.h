@@ -2,6 +2,7 @@
 #define ZORKUL_H_
 
 #include "Command.h"
+#include "Character.h"
 #include "Parser.h"
 #include "Room.h"
 #include "item.h"
@@ -11,8 +12,10 @@ using namespace std;
 
 class ZorkUL {
 private:
+    Character *theCharacter;
 	Parser parser;
 	Room *currentRoom;
+    void createCharacter();
 	void createRooms();
 	void printWelcome();
 	bool processCommand(Command command);
