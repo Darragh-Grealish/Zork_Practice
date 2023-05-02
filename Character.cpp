@@ -16,6 +16,7 @@ string Character::printInventory()
   ret += "\n Item list:\n";
   for (vector<Item>::iterator i = itemsInCharacter.begin(); i != itemsInCharacter.end(); i++)
     ret += "\t"+ (*i).getLongDescription() + "\n";
+    // getLongDescription in Item.cpp
   return ret;
 }
 

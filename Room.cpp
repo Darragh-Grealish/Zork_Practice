@@ -79,12 +79,22 @@ int Room::isItemInRoom(string inString)
             // compare inString with short description
             int tempFlag = inString.compare( itemsInRoom[x].getShortDescription());
             if (tempFlag == 0) {
-                itemsInRoom.erase(itemsInRoom.begin()+x);
                 return x;
             }
             x++;
             }
         }
     return -1;
+}
+
+Item* Room::getItemFromRoom(int location)
+{
+    return &itemsInRoom[location];
+}
+
+void Room::removeItemFromRoom(int location)
+{
+    // Remove item, calculated getting start of array and adding value of location
+    itemsInRoom.erase(itemsInRoom.begin()+location);
 }
 
