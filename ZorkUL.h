@@ -8,16 +8,18 @@
 #include "item.h"
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 class ZorkUL {
+
 private:
     Character *theCharacter;
 	Parser parser;
 	Room *currentRoom;
     void createCharacter();
 	void createRooms();
-	void printWelcome();
+
 	bool processCommand(Command command);
 	void printHelp();
 	void goRoom(Command command);
@@ -27,7 +29,11 @@ private:
 public:
 	ZorkUL();
 	void play();
+    string printWelcome();
 	string go(string direction);
+
+//signals:
+//    void printOutput(string text);
 };
 
 #endif /*ZORKUL_H_*/

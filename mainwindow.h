@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QLineEdit>
+#include <QTextBrowser>
+#include "ZorkUL.h"
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,5 +21,14 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QLineEdit *myTextField;
+    QTextBrowser *Console;
+    QPushButton *goUp;
+    ZorkUL temp;
+
+private slots:
+    void onLineEditReturnPressed();
+    void onButtonPressed();
+//    void printOutput(string text);
 };
 #endif // MAINWINDOW_H

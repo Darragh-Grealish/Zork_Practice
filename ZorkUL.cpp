@@ -1,13 +1,27 @@
 #include <iostream>
+#include "mainwindow.h"
+#include <QApplication>
 
 using namespace std;
 #include "ZorkUL.h"
 
+/*
 int main(int argc, char *argv[]) {
     ZorkUL temp;
 	temp.play();
 	return 0;
 }
+*/
+
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
+    return a.exec();
+}
+
+
 
 ZorkUL::ZorkUL() {
     createRooms();
@@ -79,12 +93,17 @@ void ZorkUL::play() {
 	cout << "end" << endl;
 }
 
-void ZorkUL::printWelcome() {
-	cout << "start"<< endl;
-	cout << "info for help"<< endl;
-	cout << endl;
-	cout << currentRoom->longDescription() << endl;
+string ZorkUL::printWelcome() {
+    string theString = "start \n info for help \n" + currentRoom->longDescription() + "\n";
+    //cout << "start"<< endl;
+    //cout << "info for help"<< endl;
+    //cout << endl;
+    //cout << currentRoom->longDescription() << endl;
+    //emit printOutput(theString);
+    return theString;
 }
+
+
 
 /**
  * Given a command, process (that is: execute) the command.
