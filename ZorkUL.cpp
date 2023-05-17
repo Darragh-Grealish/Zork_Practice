@@ -204,11 +204,8 @@ bool ZorkUL::processCommand(Command command) {
 	return false;
 }
 /** COMMANDS **/
-void ZorkUL::printHelp() {
-	cout << "valid inputs are; " << endl;
-	parser.showCommands();
+ // PrintHelp() used to be here, now is inline
 
-}
  //------------------------------------------goRoom------------------------------------------
 void ZorkUL::goRoom(Command command) {
 	if (!command.hasSecondWord()) {

@@ -21,7 +21,11 @@ private:
 	void createRooms();
 
     bool processCommand(Command command);
-	void printHelp();
+    inline void printHelp(){
+        cout << "valid inputs are; " << endl;
+        parser.showCommands();
+    }
+
 	void goRoom(Command command);
     void createItems();
     void displayItems();
