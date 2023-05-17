@@ -20,7 +20,7 @@ private:
     void createCharacter();
 	void createRooms();
 
-	bool processCommand(Command command);
+    inline bool processCommand(Command command);
 	void printHelp();
 	void goRoom(Command command);
     void createItems();
