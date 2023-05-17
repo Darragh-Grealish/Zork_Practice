@@ -20,7 +20,7 @@ private:
     void createCharacter();
 	void createRooms();
 
-    inline bool processCommand(Command command);
+    bool processCommand(Command command);
 	void printHelp();
 	void goRoom(Command command);
     void createItems();
@@ -35,5 +35,6 @@ public:
 //signals:
 //    void printOutput(string text);
 };
+
 
 #endif /*ZORKUL_H_*/
