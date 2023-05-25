@@ -9,13 +9,13 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     myTextField = ui->MyLineEdit;
-    ZorkUL temp;
-    Console = ui->textBrowser;
-    Console->setPlainText(QString::fromStdString(temp.printWelcome()));
-
+    // Importing the game
+    ZorkUL game;
+    Console = ui->textBrowser; //Text output
+    Console->setPlainText(QString::fromStdString(game.printWelcome()));
 
     QObject::connect(myTextField, &QLineEdit::returnPressed, this, &MainWindow::onLineEditReturnPressed);
-    //           Reference on GUI    If Pressed  'this'=Current Window
+    //           Reference/Name on GUI, what sends the signal, 'this'=Current instanse of Main Window, the slot/function called
     QObject::connect(ui->north, &QPushButton::pressed, this, &MainWindow::onButtonPressed);
     QObject::connect(ui->south, &QPushButton::pressed, this, &MainWindow::onButtonPressed);
     QObject::connect(ui->east, &QPushButton::pressed, this, &MainWindow::onButtonPressed);
@@ -37,7 +37,7 @@ MainWindow::~MainWindow()
 void MainWindow::onLineEditReturnPressed(){
     QString text = myTextField->text();
     //                                       Parses the String as a command
-    QString qstr = QString::fromStdString("\n" + temp.go(text.toStdString()));
+    QString qstr = QString::fromStdString("\n" + game.go(text.toStdString()));
 
     Console->setText(Console->toPlainText() + qstr);
     myTextField->setText("");
@@ -48,7 +48,7 @@ void MainWindow::onButtonPressed(){
     if (button) {
         QString buttonName = button->objectName();
         // Converting String from qString to Regular String
-        QString qstr = QString::fromStdString(temp.go(buttonName.toStdString()));
+        QString qstr = QString::fromStdString(game.go(buttonName.toStdString()));
         // Pushes what was text in cout, puts the returned text into the Console on the GUI
         Console->setText(qstr);
 

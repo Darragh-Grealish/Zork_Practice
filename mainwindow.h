@@ -24,9 +24,10 @@ private:
     QLineEdit *myTextField;
     QTextBrowser *Console;
     QPushButton *goUp;
-    ZorkUL temp;
+    // Global variable, avaliable for all functions in cpp
+    ZorkUL game;
 
-private slots:
+private slots: // Recieve signals
     void onLineEditReturnPressed();
     void onButtonPressed();
 //    void printOutput(string text);
