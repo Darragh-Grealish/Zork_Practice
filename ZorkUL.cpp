@@ -134,7 +134,7 @@ string ZorkUL::processCommand(Command command) {
 //------------------------------------------INFO------------------------------------------
 	if (commandWord.compare("info") == 0)      
     //    printHelp()
-        return "\n""valid inputs are; \ngo quit info map take put inventory";
+        return "\n\n""valid inputs are; \ngo quit info map take put inventory";
 //------------------------------------------MAP------------------------------------------
 	else if (commandWord.compare("map") == 0)
 		{
@@ -156,31 +156,28 @@ string ZorkUL::processCommand(Command command) {
         return goRoom(command);
     }
 //------------------------------------------TAKE------------------------------------------
-//    else if (commandWord.compare("take") == 0)
-//    {
-//        if (!command.hasSecondWord()) {
-//        cout << "incomplete input"<< endl;
-//        }
-//        else
-//         if (command.hasSecondWord()) {
-//        cout << "you're trying to take " + command.getSecondWord() << endl;
-//        int location = currentRoom->isItemInRoom(command.getSecondWord());
-//        if (location  < 0 ){
-//            cout << "item is not in room" << endl;
-//            cout << currentRoom->longDescription() << endl;
-//        }
-//        else{
-//            cout << "item is in room" << endl;
-//             cout << "index number " << + location << endl;
-//            cout << endl;
-//             // Character can take up items
-//            Item* currentItem = currentRoom->getItemFromRoom(location);
-//            theCharacter->addItems(currentItem);
-//            currentRoom->removeItemFromRoom(location);
-//            cout << currentRoom->longDescription() << endl;
-//            }
-//        }
-//    }
+    else if (commandWord.compare("take") == 0) {
+        if (!command.hasSecondWord()) {
+            return "incomplete input";
+        }
+        else if (command.hasSecondWord()) {
+            string atemptMessage = "\nyou're trying to take " + command.getSecondWord();
+            int location = currentRoom->isItemInRoom(command.getSecondWord());
+            if (location  < 0 ){ // Character can't take up item
+                return atemptMessage + "\nitem is not in room\n" + currentRoom->longDescription();
+            }
+            else {
+                // Character can take up items
+                Item* currentItem = currentRoom->getItemFromRoom(location);
+                theCharacter->addItems(currentItem);
+                currentRoom->removeItemFromRoom(location);
+//                cout << currentRoom->longDescription() << endl;
+                string locationString = to_string(location);
+                string itemExists = "\nitem is in room \nindex number --> " + locationString;
+                return atemptMessage + itemExists + currentRoom->longDescription();
+            }
+        }
+    }
 ////------------------------------------------PUT------------------------------------------
 //    else if (commandWord.compare("put") == 0)
 //        {
