@@ -22,14 +22,17 @@ public:
 private:
     Ui::MainWindow *ui;
     QLineEdit *myTextField;
-    QTextBrowser *Console;
+    QTextBrowser *Console1;
+//    QTextBrowser *Console2;
     QPushButton *goUp;
     // Global variable, avaliable for all functions in cpp
     ZorkUL game;
+    Parser parser;
 
 private slots: // Recieve signals
     void onLineEditReturnPressed();
     void onButtonPressed();
+    void onMapButtonPressed();
 //    void printOutput(string text);
 };
 #endif // MAINWINDOW_H

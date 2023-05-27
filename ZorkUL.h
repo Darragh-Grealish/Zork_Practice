@@ -35,6 +35,8 @@ public:
 	void play();
     string printWelcome();
 	string go(string direction);
+    string processCommand2(string commando2);
+    void nearlyProcessCommand(string someCommand);
 
 //signals:
 //    void printOutput(string text);

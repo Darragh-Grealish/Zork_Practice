@@ -15,9 +15,11 @@ int main(int argc, char *argv[]) {
 
 int main(int argc, char *argv[])
 {
+//    ZorkUL temp;
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
+//    temp.play();
     return a.exec();
 }
 
@@ -81,13 +83,13 @@ void ZorkUL::play() {
 
 	bool finished = false;
 	while (!finished) {
-		// Create pointer to command and give it a command.
-		Command* command = parser.getCommand();
-		// Pass dereferenced command and check for end of game.
-		finished = processCommand(*command);
-		// Free the memory allocated by "parser.getCommand()"
-		//   with ("return new Command(...)")
-		delete command;
+//		// Create pointer to command and give it a command.
+//		Command* command = parser.getCommand();
+//		// Pass dereferenced command and check for end of game.
+//		finished = processCommand(*command);
+//		// Free the memory allocated by "parser.getCommand()"
+//		//   with ("return new Command(...)")
+//		delete command;
 	}
 	cout << endl;
 	cout << "end" << endl;
@@ -110,6 +112,14 @@ string ZorkUL::printWelcome() {
  * If this command ends the ZorkUL game, true is returned, otherwise false is
  * returned.
  */
+void ZorkUL::nearlyProcessCommand(string someCommand) {
+    Command* command = parser.getCommand();
+    // Pass dereferenced command and check for end of game.
+    someCommand = processCommand(*command);
+    // Free the memory allocated by "parser.getCommand()"
+    //   with ("return new Command(...)")
+    delete command;
+}
 
 bool ZorkUL::processCommand(Command command) {
     if (command.isUnknown()) {
@@ -225,7 +235,7 @@ void ZorkUL::goRoom(Command command) {
 		cout << currentRoom->longDescription() << endl;
 	}
 }
-//------------------------------------------GO------------------------------------------
+//------------------------------------------GO Button------------------------------------------
 string ZorkUL::go(string direction) {
 	//Make the direction lowercase
 	//transform(direction.begin(), direction.end(), direction.begin(),:: tolower);
@@ -238,4 +248,21 @@ string ZorkUL::go(string direction) {
 		currentRoom = nextRoom;
 		return currentRoom->longDescription();
 	}
+}
+string ZorkUL::processCommand2(string commando2) {
+    if (commando2.compare("map") == 0)
+    {
+        std::string mapString =
+            "     [newRoom]     ""\n"
+            "              |         ""\n"
+            "              |         ""\n"
+            "[h] --- [f] --- [g]""\n"
+            "              |         ""\n"
+            "              |         ""\n"
+            "[c] - [aRoom] - [b]""\n"
+            "              |         ""\n"
+            "              |         ""\n"
+            "[i] --- [d] --- [e]";
+        return mapString;
+    }
 }
