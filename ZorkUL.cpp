@@ -112,24 +112,18 @@ string ZorkUL::printWelcome() {
  * If this command ends the ZorkUL game, true is returned, otherwise false is
  * returned.
  */
+//------------------------------------------Button Message Convertion------------------------------------------
 string ZorkUL::nearlyProcessCommand(string someCommand) {
-    cout << "In nearly command" << endl;
-//    cout << someCommand << endl;
     Command* command = parser.getCommand(someCommand);
-    cout << "commmand parsed" << endl;
-    // Pass dereferenced command and check for end of game.
     string answer = processCommand(*command);
     return answer;
-    cout << "Returned" << endl;
     delete command;
-    cout << "Comand deleted" << endl;
 }
-
+//------------------------------------------Processor------------------------------------------
 string ZorkUL::processCommand(Command command) {
     if (command.isUnknown()) {
         return "invalid input --";
     }
-
 	string commandWord = command.getCommandWord();
 //------------------------------------------INFO------------------------------------------
 	if (commandWord.compare("info") == 0)      
