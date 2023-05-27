@@ -29,11 +29,11 @@ ZorkUL::ZorkUL() {
 // Creating instance of character
     createCharacter();
 }
-// Instance of Character Darragh
+// Instance of Character Helper
 void ZorkUL::createCharacter(){
-    Character *Darragh;
-    Darragh = new Character("Darragh");
-    theCharacter = Darragh;
+    Character *Helper;
+    Helper = new Character("Helper");
+    theCharacter = Helper;
 }
 
 void ZorkUL::createRooms()  {
@@ -77,9 +77,6 @@ void ZorkUL::createRooms()  {
 void ZorkUL::play() {
 	printWelcome();
 
-	// Enter the main command loop.  Here we repeatedly read commands and
-	// execute them until the ZorkUL game is over.
-
 	bool finished = false;
 	while (!finished) {
 //		// Create pointer to command and give it a command.
@@ -95,16 +92,14 @@ void ZorkUL::play() {
 }
 
 string ZorkUL::printWelcome() {
+    string storyTitle = "C++ game developed by Darragh Grealish\n Based on the Scooby Doo Episode 'What a night for a Kight' \n";
+    string storyLine = "When Scooby and Shaggy are walking home from the movies, they "
+                       "discover a black suit of armor in a pickup truck, and the gang deliver it to the local museum. "
+                       "The kids later break into the museum to search for clues, after learning that the archaeologist "
+                       "who was transporting the suit is missing, and they heard that the knight's armor has come to life.\n";
     string theString = "starting... \ntype info for help \n" + currentRoom->longDescription() + "\n";
-    //cout << "start"<< endl;
-    //cout << "info for help"<< endl;
-    //cout << endl;
-    //cout << currentRoom->longDescription() << endl;
-    //emit printOutput(theString);
-    return theString;
+    return storyTitle + storyLine + theString;
 }
-
-
 
 /**
  * Given a command, process (that is: execute) the command.
