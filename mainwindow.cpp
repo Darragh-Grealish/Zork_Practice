@@ -57,7 +57,7 @@ void MainWindow::onLineEditReturnPressed(){
     //                                       Parses the String as a command
     QString qstr = QString::fromStdString("\n" + game.nearlyProcessCommand(text.toStdString()));
 
-    Console1->setText(Console1->toPlainText() + qstr);
+    Console1->setText(qstr + Console1->toPlainText());
 //    Console2->setText(Console2->toPlainText() + qstr);
     myTextField->setText("");
         }
@@ -69,7 +69,7 @@ void MainWindow::onButtonPressed(){
         // Converting String from qString to Regular String
         QString qstr = QString::fromStdString(game.go(buttonName.toStdString()));
         // Pushes what was text in cout, puts the returned text into the Console on the GUI
-        Console1->setText(Console1->toPlainText() + qstr);
+        Console1->setText(qstr + Console1->toPlainText());
 //        Console2->setText(qstr);
 
     }
@@ -81,7 +81,7 @@ void MainWindow::onProcessButtonPressed(){
         QString buttonName = button->objectName();
         // Converting String from qString to Regular String
         QString qstr = QString::fromStdString(game.nearlyProcessCommand(buttonName.toStdString()));
-        Console1->setText(Console1->toPlainText() + "\n" + qstr);
+        Console1->setText(qstr + "\n" + Console1->toPlainText());
 //        Console2->setText(qstr);
     }
 }

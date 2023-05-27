@@ -97,8 +97,8 @@ string ZorkUL::printWelcome() {
                        "discover a black suit of armor in a pickup truck, and the gang deliver it to the local museum. "
                        "The kids later break into the museum to search for clues, after learning that the archaeologist "
                        "who was transporting the suit is missing, and they heard that the knight's armor has come to life.\n";
-    string theString = "starting... \ntype info for help \n" + currentRoom->longDescription() + "\n";
-    return storyTitle + storyLine + theString;
+    string theStartString = "starting... \ntype info for help \n";
+    return theStartString + storyTitle + storyLine + currentRoom->longDescription();
 }
 
 /**
