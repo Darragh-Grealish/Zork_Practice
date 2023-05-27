@@ -4,16 +4,11 @@ Parser::Parser() {
 	commands = new CommandWords();
 }
 
-Command* Parser::getCommand() {
-	string inputLine = ""; // will hold the full input line
+Command* Parser::getCommand(string txt) {
 	string word1;
 	string word2;
-	string buffer;
+    string buffer = txt;
 	vector<string> words;
-
-	cout << "> "; // print prompt
-
-	getline(cin, buffer, '\n');	// read a line from cin to "buffer"
 
 	string::size_type pos = 0, last_pos = 0;
 
@@ -50,6 +45,6 @@ Command* Parser::getCommand() {
 /**
  * Print out a list of valid command words.
  */
-void Parser::showCommands() {
+string Parser::showCommands() {
 	commands->showAll();
 }

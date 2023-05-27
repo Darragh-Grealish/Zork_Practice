@@ -10,8 +10,8 @@ private:
 
 public:
 	Parser();
-	Command* getCommand();
-	void showCommands();
+    Command* getCommand(string txt);
+    string showCommands();
 };
 
 #endif /*PARSER_H_*/

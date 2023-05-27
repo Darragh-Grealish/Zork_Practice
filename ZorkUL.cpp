@@ -112,106 +112,110 @@ string ZorkUL::printWelcome() {
  * If this command ends the ZorkUL game, true is returned, otherwise false is
  * returned.
  */
-void ZorkUL::nearlyProcessCommand(string someCommand) {
-    Command* command = parser.getCommand();
+string ZorkUL::nearlyProcessCommand(string someCommand) {
+    cout << "In nearly command" << endl;
+//    cout << someCommand << endl;
+    Command* command = parser.getCommand(someCommand);
+    cout << "commmand parsed" << endl;
     // Pass dereferenced command and check for end of game.
-    someCommand = processCommand(*command);
-    // Free the memory allocated by "parser.getCommand()"
-    //   with ("return new Command(...)")
+    string answer = processCommand(*command);
+    return answer;
+    cout << "Returned" << endl;
     delete command;
+    cout << "Comand deleted" << endl;
 }
 
-bool ZorkUL::processCommand(Command command) {
+string ZorkUL::processCommand(Command command) {
     if (command.isUnknown()) {
-        cout << "invalid input --"<< endl;
-        return false;
+        return "invalid input --";
     }
-
 
 	string commandWord = command.getCommandWord();
 //------------------------------------------INFO------------------------------------------
 	if (commandWord.compare("info") == 0)
-		printHelp();
+        return printHelp();
 //------------------------------------------MAP------------------------------------------
 	else if (commandWord.compare("map") == 0)
 		{
-        cout << "     [newRoom]     " << endl;
-        cout << "         |         " << endl;
-        cout << "         |         " << endl;
-        cout << "[h] --- [f] --- [g]" << endl;
-		cout << "         |         " << endl;
-        cout << "         |         " << endl;
-        cout << "[c] - [aRoom] - [b]" << endl;
-		cout << "         |         " << endl;
-		cout << "         |         " << endl;
-		cout << "[i] --- [d] --- [e]" << endl;
+        std::string mapString =
+            "     [newRoom]     ""\n"
+            "              |         ""\n"
+            "              |         ""\n"
+            "[h] --- [f] --- [g]""\n"
+            "              |         ""\n"
+            "              |         ""\n"
+            "[c] - [aRoom] - [b]""\n"
+            "              |         ""\n"
+            "              |         ""\n"
+            "[i] --- [d] --- [e]";
+        return mapString;
 		}
 //------------------------------------------GO------------------------------------------
-	else if (commandWord.compare("go") == 0)
-		goRoom(command);
-//------------------------------------------TAKE------------------------------------------
-    else if (commandWord.compare("take") == 0)
-    {
-       	if (!command.hasSecondWord()) {
-        cout << "incomplete input"<< endl;
-        }
-        else
-         if (command.hasSecondWord()) {
-        cout << "you're trying to take " + command.getSecondWord() << endl;
-        int location = currentRoom->isItemInRoom(command.getSecondWord());
-        if (location  < 0 ){
-            cout << "item is not in room" << endl;
-            cout << currentRoom->longDescription() << endl;
-        }
-        else{
-            cout << "item is in room" << endl;
-             cout << "index number " << + location << endl;
-            cout << endl;
-             // Character can take up items
-            Item* currentItem = currentRoom->getItemFromRoom(location);
-            theCharacter->addItems(currentItem);
-            currentRoom->removeItemFromRoom(location);
-            cout << currentRoom->longDescription() << endl;
-            }
-        }
-    }
-//------------------------------------------PUT------------------------------------------
-    else if (commandWord.compare("put") == 0)
-        {
-        if (!command.hasSecondWord()) {
-            cout << "incomplete input"<< endl;
-        }
-        else
-            if (command.hasSecondWord()) {
-            cout << "you're adding " + command.getSecondWord() << endl;
-            // Allowing Character to put
-            Item itemToPut = theCharacter->hasItem(command.getSecondWord());
-            // Item no there
-            if(itemToPut.getShortDescription().compare("Nothing") == 0){
-            cout << "You don't have that particular item... ;(" << endl;
-            cout << currentRoom->longDescription() << endl;
-            }
-            // Item there and being put
-            else {
-            cout << "You put " << endl;
-            currentRoom->addItem(&itemToPut);
-            theCharacter->putItems(&itemToPut);
-            cout << currentRoom->longDescription() << endl;
-            }
-        }
-    }
-//------------------------------------------INVENTORY------------------------------------------
-    else if (commandWord.compare("inventory") == 0){
-        theCharacter->printInventory();
-    }
-//------------------------------------------QUIT------------------------------------------
-    else if (commandWord.compare("quit") == 0) {
-		if (command.hasSecondWord())
-			cout << "overdefined input"<< endl;
-		else
-			return true; /**signal to quit*/
-	}
-	return false;
+//	else if (commandWord.compare("go") == 0)
+//		goRoom(command);
+////------------------------------------------TAKE------------------------------------------
+//    else if (commandWord.compare("take") == 0)
+//    {
+//       	if (!command.hasSecondWord()) {
+//        cout << "incomplete input"<< endl;
+//        }
+//        else
+//         if (command.hasSecondWord()) {
+//        cout << "you're trying to take " + command.getSecondWord() << endl;
+//        int location = currentRoom->isItemInRoom(command.getSecondWord());
+//        if (location  < 0 ){
+//            cout << "item is not in room" << endl;
+//            cout << currentRoom->longDescription() << endl;
+//        }
+//        else{
+//            cout << "item is in room" << endl;
+//             cout << "index number " << + location << endl;
+//            cout << endl;
+//             // Character can take up items
+//            Item* currentItem = currentRoom->getItemFromRoom(location);
+//            theCharacter->addItems(currentItem);
+//            currentRoom->removeItemFromRoom(location);
+//            cout << currentRoom->longDescription() << endl;
+//            }
+//        }
+//    }
+////------------------------------------------PUT------------------------------------------
+//    else if (commandWord.compare("put") == 0)
+//        {
+//        if (!command.hasSecondWord()) {
+//            cout << "incomplete input"<< endl;
+//        }
+//        else
+//            if (command.hasSecondWord()) {
+//            cout << "you're adding " + command.getSecondWord() << endl;
+//            // Allowing Character to put
+//            Item itemToPut = theCharacter->hasItem(command.getSecondWord());
+//            // Item no there
+//            if(itemToPut.getShortDescription().compare("Nothing") == 0){
+//            cout << "You don't have that particular item... ;(" << endl;
+//            cout << currentRoom->longDescription() << endl;
+//            }
+//            // Item there and being put
+//            else {
+//            cout << "You put " << endl;
+//            currentRoom->addItem(&itemToPut);
+//            theCharacter->putItems(&itemToPut);
+//            cout << currentRoom->longDescription() << endl;
+//            }
+//        }
+//    }
+////------------------------------------------INVENTORY------------------------------------------
+//    else if (commandWord.compare("inventory") == 0){
+//        theCharacter->printInventory();
+//    }
+////------------------------------------------QUIT------------------------------------------
+//    else if (commandWord.compare("quit") == 0) {
+//		if (command.hasSecondWord())
+//			cout << "overdefined input"<< endl;
+//		else
+//			return true; /**signal to quit*/
+//	}
+    return "false";
 }
 /** COMMANDS **/
  // PrintHelp() used to be here, now is inline

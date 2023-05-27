@@ -35,11 +35,12 @@ bool CommandWords::isCommand(string aString) {
 /*
  * Print all valid commands to System.out.
  */
-void CommandWords::showAll() {
+string CommandWords::showAll() {
 	//Loops through validCommands and prints each to the screen.
+    string helpString;
 	for (unsigned int i = 0; i < validCommands.size(); i++)
 	{
-		cout << validCommands[i]<< "  ";
+        helpString = helpString + validCommands[i] + " ";
 	}
-	cout << endl;
+    return helpString;
 }

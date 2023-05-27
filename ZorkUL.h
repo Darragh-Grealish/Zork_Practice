@@ -20,10 +20,9 @@ private:
     void createCharacter();
 	void createRooms();
 
-    bool processCommand(Command command);
-    inline void printHelp(){
-        cout << "valid inputs are; " << endl;
-        parser.showCommands();
+    string processCommand(Command command);
+    inline string printHelp(){
+        return "valid inputs are; " + parser.showCommands();
     }
 
 	void goRoom(Command command);
@@ -36,7 +35,7 @@ public:
     string printWelcome();
 	string go(string direction);
     string processCommand2(string commando2);
-    void nearlyProcessCommand(string someCommand);
+    string nearlyProcessCommand(string someCommand);
 
 //signals:
 //    void printOutput(string text);
