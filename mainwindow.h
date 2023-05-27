@@ -32,7 +32,7 @@ private:
 private slots: // Recieve signals
     void onLineEditReturnPressed();
     void onButtonPressed();
-    void onMapButtonPressed();
+    void onProcessButtonPressed();
 //    void printOutput(string text);
 };
 #endif // MAINWINDOW_H

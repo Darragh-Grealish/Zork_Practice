@@ -17,8 +17,8 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>40</y>
+      <x>60</x>
+      <y>20</y>
       <width>701</width>
       <height>461</height>
      </rect>
@@ -36,7 +36,7 @@
         <x>460</x>
         <y>0</y>
         <width>151</width>
-        <height>81</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
@@ -46,10 +46,10 @@
      <widget class="QPushButton" name="south">
       <property name="geometry">
        <rect>
-        <x>460</x>
-        <y>140</y>
-        <width>151</width>
-        <height>71</height>
+        <x>470</x>
+        <y>100</y>
+        <width>141</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
@@ -59,9 +59,9 @@
      <widget class="QPushButton" name="west">
       <property name="geometry">
        <rect>
-        <x>360</x>
-        <y>90</y>
-        <width>121</width>
+        <x>380</x>
+        <y>50</y>
+        <width>101</width>
         <height>51</height>
        </rect>
       </property>
@@ -72,10 +72,10 @@
      <widget class="QPushButton" name="east">
       <property name="geometry">
        <rect>
-        <x>580</x>
-        <y>80</y>
-        <width>111</width>
-        <height>61</height>
+        <x>590</x>
+        <y>50</y>
+        <width>101</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
@@ -85,18 +85,18 @@
      <widget class="QTextBrowser" name="textBrowser_1">
       <property name="geometry">
        <rect>
-        <x>15</x>
-        <y>1</y>
-        <width>301</width>
-        <height>241</height>
+        <x>0</x>
+        <y>0</y>
+        <width>331</width>
+        <height>431</height>
        </rect>
       </property>
      </widget>
      <widget class="QLineEdit" name="MyLineEdit">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>270</y>
+        <x>470</x>
+        <y>350</y>
         <width>221</width>
         <height>71</height>
        </rect>
@@ -105,14 +105,27 @@
      <widget class="QPushButton" name="map">
       <property name="geometry">
        <rect>
-        <x>439</x>
-        <y>281</y>
+        <x>560</x>
+        <y>220</y>
         <width>121</width>
         <height>51</height>
        </rect>
       </property>
       <property name="text">
        <string>Map</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="info">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>370</y>
+        <width>111</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Info</string>
       </property>
      </widget>
     </widget>

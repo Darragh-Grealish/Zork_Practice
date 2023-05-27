@@ -96,7 +96,7 @@ void ZorkUL::play() {
 }
 
 string ZorkUL::printWelcome() {
-    string theString = "start \n info for help \n" + currentRoom->longDescription() + "\n";
+    string theString = "starting... \ntype info for help \n" + currentRoom->longDescription() + "\n";
     //cout << "start"<< endl;
     //cout << "info for help"<< endl;
     //cout << endl;
@@ -132,12 +132,13 @@ string ZorkUL::processCommand(Command command) {
 
 	string commandWord = command.getCommandWord();
 //------------------------------------------INFO------------------------------------------
-	if (commandWord.compare("info") == 0)
-        return printHelp();
+	if (commandWord.compare("info") == 0)      
+    //    printHelp()
+        return "\n""valid inputs are; \ngo quit info map take put inventory";
 //------------------------------------------MAP------------------------------------------
 	else if (commandWord.compare("map") == 0)
 		{
-        std::string mapString =
+        std::string mapString ="\n\n"
             "     [newRoom]     ""\n"
             "              |         ""\n"
             "              |         ""\n"
@@ -151,12 +152,13 @@ string ZorkUL::processCommand(Command command) {
         return mapString;
 		}
 //------------------------------------------GO------------------------------------------
-//	else if (commandWord.compare("go") == 0)
-//		goRoom(command);
-////------------------------------------------TAKE------------------------------------------
+    else if (commandWord.compare("go") == 0){
+        return goRoom(command);
+    }
+//------------------------------------------TAKE------------------------------------------
 //    else if (commandWord.compare("take") == 0)
 //    {
-//       	if (!command.hasSecondWord()) {
+//        if (!command.hasSecondWord()) {
 //        cout << "incomplete input"<< endl;
 //        }
 //        else
@@ -209,22 +211,21 @@ string ZorkUL::processCommand(Command command) {
 //        theCharacter->printInventory();
 //    }
 ////------------------------------------------QUIT------------------------------------------
-//    else if (commandWord.compare("quit") == 0) {
-//		if (command.hasSecondWord())
-//			cout << "overdefined input"<< endl;
-//		else
-//			return true; /**signal to quit*/
-//	}
+    else if (commandWord.compare("quit") == 0) {
+        if (command.hasSecondWord())
+            return "overdefined input";
+        else
+            return "Thank you for playing the game."; /**signal to quit*/
+    }
     return "false";
 }
 /** COMMANDS **/
  // PrintHelp() used to be here, now is inline
 
  //------------------------------------------goRoom------------------------------------------
-void ZorkUL::goRoom(Command command) {
+string ZorkUL::goRoom(Command command) {
 	if (!command.hasSecondWord()) {
-		cout << "incomplete input"<< endl;
-		return;
+        return "incomplete input";
 	}
 
 	string direction = command.getSecondWord();
@@ -233,10 +234,10 @@ void ZorkUL::goRoom(Command command) {
 	Room* nextRoom = currentRoom->nextRoom(direction);
 
 	if (nextRoom == NULL)
-		cout << "underdefined input"<< endl;
+        return "underdefined input";
 	else {
 		currentRoom = nextRoom;
-		cout << currentRoom->longDescription() << endl;
+        return currentRoom->longDescription();
 	}
 }
 //------------------------------------------GO Button------------------------------------------
@@ -250,23 +251,6 @@ string ZorkUL::go(string direction) {
 	else
 	{
 		currentRoom = nextRoom;
-		return currentRoom->longDescription();
+        return "\n" + currentRoom->longDescription();
 	}
-}
-string ZorkUL::processCommand2(string commando2) {
-    if (commando2.compare("map") == 0)
-    {
-        std::string mapString =
-            "     [newRoom]     ""\n"
-            "              |         ""\n"
-            "              |         ""\n"
-            "[h] --- [f] --- [g]""\n"
-            "              |         ""\n"
-            "              |         ""\n"
-            "[c] - [aRoom] - [b]""\n"
-            "              |         ""\n"
-            "              |         ""\n"
-            "[i] --- [d] --- [e]";
-        return mapString;
-    }
 }

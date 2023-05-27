@@ -25,7 +25,7 @@ private:
         return "valid inputs are; " + parser.showCommands();
     }
 
-	void goRoom(Command command);
+    string goRoom(Command command);
     void createItems();
     void displayItems();
 
