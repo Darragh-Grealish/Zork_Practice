@@ -22,9 +22,12 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(ui->south, &QPushButton::pressed, this, &MainWindow::onButtonPressed);
     QObject::connect(ui->east, &QPushButton::pressed, this, &MainWindow::onButtonPressed);
     QObject::connect(ui->west, &QPushButton::pressed, this, &MainWindow::onButtonPressed);
-    QObject::connect(ui->map, &QPushButton::pressed, this, &MainWindow::onProcessButtonPressed);
+
+    QObject::connect(ui->quit, &QPushButton::pressed, this, &MainWindow::onProcessButtonPressed);
     QObject::connect(ui->info, &QPushButton::pressed, this, &MainWindow::onProcessButtonPressed);
+    QObject::connect(ui->map, &QPushButton::pressed, this, &MainWindow::onProcessButtonPressed);
     QObject::connect(ui->inventory, &QPushButton::pressed, this, &MainWindow::onProcessButtonPressed);
+
 
 //    connect(temp, SIGNAL(printOutput(string)), this, SLOT(printOutput(string)));
 

@@ -106,7 +106,7 @@
       <property name="geometry">
        <rect>
         <x>560</x>
-        <y>220</y>
+        <y>230</y>
         <width>121</width>
         <height>51</height>
        </rect>
@@ -118,9 +118,9 @@
      <widget class="QPushButton" name="info">
       <property name="geometry">
        <rect>
-        <x>350</x>
-        <y>370</y>
-        <width>111</width>
+        <x>560</x>
+        <y>170</y>
+        <width>121</width>
         <height>51</height>
        </rect>
       </property>
@@ -132,13 +132,26 @@
       <property name="geometry">
        <rect>
         <x>560</x>
-        <y>280</y>
+        <y>290</y>
         <width>121</width>
         <height>51</height>
        </rect>
       </property>
       <property name="text">
        <string>Inventory</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="quit">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>360</y>
+        <width>111</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>End Game</string>
       </property>
      </widget>
     </widget>
