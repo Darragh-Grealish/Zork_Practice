@@ -40,9 +40,11 @@ Item Character::hasItem(string name){
 //------------------------------------------printINVENTORY------------------------------------------
 string Character::printInventory()
 {
-  for (Item i : itemsInCharacter)
-    cout << (i).getShortDescription() << endl;
-  return "";
+    string returnString;
+    for (Item i : itemsInCharacter){
+        returnString = returnString + (i).getShortDescription() + " ";
+    }
+    return "\nInventory: " + returnString;
 }
 
 

@@ -201,9 +201,9 @@ string ZorkUL::processCommand(Command command) {
         }
     }
 ////------------------------------------------INVENTORY------------------------------------------
-//    else if (commandWord.compare("inventory") == 0){
-//        theCharacter->printInventory();
-//    }
+    else if (commandWord.compare("inventory") == 0){
+        return theCharacter->printInventory();
+    }
 ////------------------------------------------QUIT------------------------------------------
     else if (commandWord.compare("quit") == 0) {
         if (command.hasSecondWord())
