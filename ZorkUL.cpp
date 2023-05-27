@@ -179,30 +179,27 @@ string ZorkUL::processCommand(Command command) {
         }
     }
 ////------------------------------------------PUT------------------------------------------
-//    else if (commandWord.compare("put") == 0)
-//        {
-//        if (!command.hasSecondWord()) {
-//            cout << "incomplete input"<< endl;
-//        }
-//        else
-//            if (command.hasSecondWord()) {
-//            cout << "you're adding " + command.getSecondWord() << endl;
-//            // Allowing Character to put
-//            Item itemToPut = theCharacter->hasItem(command.getSecondWord());
-//            // Item no there
-//            if(itemToPut.getShortDescription().compare("Nothing") == 0){
-//            cout << "You don't have that particular item... ;(" << endl;
-//            cout << currentRoom->longDescription() << endl;
-//            }
-//            // Item there and being put
-//            else {
-//            cout << "You put " << endl;
-//            currentRoom->addItem(&itemToPut);
-//            theCharacter->putItems(&itemToPut);
-//            cout << currentRoom->longDescription() << endl;
-//            }
-//        }
-//    }
+    else if (commandWord.compare("put") == 0)
+        {
+        if (!command.hasSecondWord()) {
+            return "incomplete input";
+        }
+        else if (command.hasSecondWord()) {
+            string atemptAdd = "\nyou're adding " + command.getSecondWord();
+            // Allowing Character to put
+            Item itemToPut = theCharacter->hasItem(command.getSecondWord());
+            // Item no there
+            if(itemToPut.getShortDescription().compare("Nothing") == 0){
+                return atemptAdd + "\nYou don't have that particular item... ;(" + currentRoom->longDescription();
+            }
+            // Item there and being put
+            else {
+                currentRoom->addItem(&itemToPut);
+                theCharacter->putItems(&itemToPut);
+                return atemptAdd + currentRoom->longDescription();
+            }
+        }
+    }
 ////------------------------------------------INVENTORY------------------------------------------
 //    else if (commandWord.compare("inventory") == 0){
 //        theCharacter->printInventory();
