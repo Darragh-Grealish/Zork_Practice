@@ -128,6 +128,19 @@
        <string>Info</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="inventory">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>280</y>
+        <width>121</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Inventory</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">

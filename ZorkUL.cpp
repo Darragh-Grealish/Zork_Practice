@@ -134,11 +134,11 @@ string ZorkUL::processCommand(Command command) {
 //------------------------------------------INFO------------------------------------------
 	if (commandWord.compare("info") == 0)      
     //    printHelp()
-        return "\n\n""valid inputs are; \ngo quit info map take put inventory";
+        return "\n""valid inputs are; \ngo quit info map take put inventory";
 //------------------------------------------MAP------------------------------------------
 	else if (commandWord.compare("map") == 0)
 		{
-        std::string mapString ="\n\n"
+        std::string mapString ="\n"
             "     [newRoom]     ""\n"
             "              |         ""\n"
             "              |         ""\n"

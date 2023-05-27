@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(ui->west, &QPushButton::pressed, this, &MainWindow::onButtonPressed);
     QObject::connect(ui->map, &QPushButton::pressed, this, &MainWindow::onProcessButtonPressed);
     QObject::connect(ui->info, &QPushButton::pressed, this, &MainWindow::onProcessButtonPressed);
+    QObject::connect(ui->inventory, &QPushButton::pressed, this, &MainWindow::onProcessButtonPressed);
 
 //    connect(temp, SIGNAL(printOutput(string)), this, SLOT(printOutput(string)));
 
@@ -72,7 +73,7 @@ void MainWindow::onProcessButtonPressed(){
         // Pushes what was text in cout, puts the returned text into the Console on the GUI
 
 //        QString qstr = QString::fromStdString(game.processCommand2(buttonName.toStdString()));
-        Console1->setText(Console1->toPlainText() + qstr);
+        Console1->setText(Console1->toPlainText() + "\n" + qstr);
 //        Console2->setText(qstr);
     }
 }
