@@ -80,12 +80,7 @@ void MainWindow::onProcessButtonPressed(){
     if (button) {
         QString buttonName = button->objectName();
         // Converting String from qString to Regular String
-        cout << "Before" << endl;
         QString qstr = QString::fromStdString(game.nearlyProcessCommand(buttonName.toStdString()));
-        cout << "After" << endl;
-        // Pushes what was text in cout, puts the returned text into the Console on the GUI
-
-//        QString qstr = QString::fromStdString(game.processCommand2(buttonName.toStdString()));
         Console1->setText(Console1->toPlainText() + "\n" + qstr);
 //        Console2->setText(qstr);
     }
