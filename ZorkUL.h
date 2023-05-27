@@ -37,6 +37,7 @@ public:
     string processCommand2(string commando2);
     string nearlyProcessCommand(string someCommand);
 
+
 //signals:
 //    void printOutput(string text);
 };

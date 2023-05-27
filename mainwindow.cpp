@@ -1,12 +1,22 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "ZorkUL.h"
+#include <iostream>
 
 using namespace std;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
+//    player = new QMediaPlayer;
+//    audioOutput = new QAudioOutput;
+//    player->setAudioOutput(audioOutput);
+//    player->setSource(QUrl::fromLocalFile(QCoreApplication::applicationDirPath() + "./ScoobyDoo-1970.mp3"));
+//    player->setSource(QUrl::fromLocalFile("/Users/me/Music/coolsong.mp3"));
+//    audioOutput->setVolume(50);
+//    player->play();
+
     ui->setupUi(this);
     myTextField = ui->MyLineEdit;
     // Importing the game
