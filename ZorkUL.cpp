@@ -1,9 +1,13 @@
 #include <iostream>
+#include "QtWidgets/qapplication.h"
 #include "mainwindow.h"
-#include <QApplication>
+//#include <QApplication>
+//#include <QAudioOutput>
+//#include <QMediaPlayer>
 
 using namespace std;
 #include "ZorkUL.h"
+//#include <QDebug>
 
 /*
 int main(int argc, char *argv[]) {
@@ -21,6 +25,13 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
     return a.exec();
+//    QMediaPlayer* player = new QMediaPlayer();
+//    QAudioOutput* audioOutput = new QAudioOutput;
+//    player->setAudioOutput(audioOutput);
+////    player->setSource(QUrl::fromLocalFile(QCoreApplication::applicationDirPath() + "./ScoobyDoo-1970.mp3"));
+//    player->setSource(QUrl::fromLocalFile("Darragh's MacBook Air/Macintosh HD/Users/darraghgrealish/Desktop/QT/test3/ScoobyDoo-1970.mp3"));
+//    audioOutput->setVolume(50);
+//    player->play();
 }
 
 
@@ -91,14 +102,48 @@ void ZorkUL::play() {
 	cout << "end" << endl;
 }
 
+// Copy Constructor with Initializer list
+class A3
+{
+public:
+    A3(string name)
+    {
+    cout << name << " Constructor A3 \n" << endl;
+    }
+    ~A3(){
+    cout << "Destructor A3 \n" << endl;
+    }
+};
+
+class S: public A3
+{
+public:
+    S(string name) : A3(name)
+    {
+    cout << name << " Constructor S \n" << endl;
+    }
+    ~S(){
+    cout << "Destructor S \n" << endl;
+    }
+};
+
+struct St2 {
+    unsigned int theDate : 5;
+};
+
 string ZorkUL::printWelcome() {
+    string name = "name";
+    S obj(name);
+    St2 myObj;
+    myObj.theDate = 31;
+    cout << "Date using bit structer " << myObj.theDate << "\n" << endl;
     string storyTitle = "C++ game developed by Darragh Grealish\n Based on the Scooby Doo Episode 'What a night for a Kight' \n";
     string storyLine = "When Scooby and Shaggy are walking home from the movies, they "
                        "discover a black suit of armor in a pickup truck, and the gang deliver it to the local museum. "
                        "The kids later break into the museum to search for clues, after learning that the archaeologist "
                        "who was transporting the suit is missing, and they heard that the knight's armor has come to life.\n";
     string theStartString = "starting... \ntype info for help \n";
-    return theStartString + storyTitle + storyLine + currentRoom->longDescription();
+    return  theStartString + storyTitle + storyLine + currentRoom->longDescription();
 }
 
 /**
@@ -124,7 +169,7 @@ string ZorkUL::processCommand(Command command) {
     //    printHelp()
         return "\n""valid inputs are; \ngo quit info map take put inventory";
 //------------------------------------------MAP------------------------------------------
-	else if (commandWord.compare("map") == 0)
+    else if (commandWord.compare("map") == 0)
 		{
         std::string mapString ="\n"
             "     [newRoom]     ""\n"
@@ -175,7 +220,8 @@ string ZorkUL::processCommand(Command command) {
         else if (command.hasSecondWord()) {
             string atemptAdd = "\nyou're adding " + command.getSecondWord();
             // Allowing Character to put
-            Item itemToPut = theCharacter->hasItem(command.getSecondWord());
+            Item* inItem = new Item(command.getSecondWord());
+            Item itemToPut = theCharacter->hasItem(inItem);
             // Item no there
             if(itemToPut.getShortDescription().compare("Nothing") == 0){
                 return atemptAdd + "\nYou don't have that particular item... ;(" + currentRoom->longDescription();
@@ -186,6 +232,7 @@ string ZorkUL::processCommand(Command command) {
                 theCharacter->putItems(&itemToPut);
                 return atemptAdd + currentRoom->longDescription();
             }
+            delete inItem;
         }
     }
 ////------------------------------------------INVENTORY------------------------------------------
@@ -194,10 +241,13 @@ string ZorkUL::processCommand(Command command) {
     }
 ////------------------------------------------QUIT------------------------------------------
     else if (commandWord.compare("quit") == 0) {
-        if (command.hasSecondWord())
+        if (command.hasSecondWord()){
             return "overdefined input";
-        else
-            return "Thank you for playing the game."; /**signal to quit*/
+        }
+        else{
+            cout << "Thank you for playing the game."; /**signal to quit*/
+            exit(0);
+        }
     }
     return "false";
 }

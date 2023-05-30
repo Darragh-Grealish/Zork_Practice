@@ -29,6 +29,7 @@ public:
 	void setValue(float value);
 	int getWeaponCheck();
 	void setWeaponCheck(int weaponCheck);
+    bool operator==(const Item &other) const;
 };
 
 // # is a preprocessor language, series of commands that let you edit the code before compiling, "replace this with this"

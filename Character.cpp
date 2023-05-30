@@ -30,13 +30,14 @@ int Character::getItemIndex(Item *item){
 
 //------------------------------------------hasITEM------------------------------------------
 // Character having an Item
-Item Character::hasItem(string name){
+Item Character::hasItem(Item *inItem){
     for (Item i : itemsInCharacter)
-        if(i.getShortDescription().compare(name) == 0)
+        if(i == *inItem)
             return i;
     Item* temp = new Item("Nothing");
     return *temp;
 }
+
 //------------------------------------------printINVENTORY------------------------------------------
 string Character::printInventory()
 {

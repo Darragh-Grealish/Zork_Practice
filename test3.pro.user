@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 10.0.0, 2023-05-04T17:00:12. -->
+<!-- Written by QtCreator 10.0.0, 2023-05-30T17:07:33. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -236,7 +236,6 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">test32</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/darraghgrealish/Desktop/QT/Zork_Practice/test3.pro</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/Users/darraghgrealish/Desktop/QT/Zork_Practice/test3.pro</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
@@ -244,7 +243,6 @@
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="bool" key="RunConfiguration.UseTerminal">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">/Users/darraghgrealish/Desktop/QT/build-test3-Qt_6_5_0_for_macOS-Debug/test3.app/Contents/MacOS</value>
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>

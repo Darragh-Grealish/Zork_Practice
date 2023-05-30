@@ -9,22 +9,14 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
 
-//    player = new QMediaPlayer;
-//    audioOutput = new QAudioOutput;
-//    player->setAudioOutput(audioOutput);
-//    player->setSource(QUrl::fromLocalFile(QCoreApplication::applicationDirPath() + "./ScoobyDoo-1970.mp3"));
-//    player->setSource(QUrl::fromLocalFile("/Users/me/Music/coolsong.mp3"));
-//    audioOutput->setVolume(50);
-//    player->play();
-
     ui->setupUi(this);
     myTextField = ui->MyLineEdit;
     // Importing the game
     ZorkUL game;
     Console1 = ui->textBrowser_1; //Text output
-//    Console2 = ui->textBrowser_2;
+    Console2 = ui->textBrowser_2;
     Console1->setPlainText(QString::fromStdString(game.printWelcome()));
-//    Console2->setPlainText(QString::fromStdString(game.printWelcome()));
+    Console2->setPlainText(QString::fromStdString(game.printWelcome()));
 
     QObject::connect(myTextField, &QLineEdit::returnPressed, this, &MainWindow::onLineEditReturnPressed);
     //   Reference/Name on GUI, what sends the signal, 'this'=Current instanse of Main Window, the slot/function called
@@ -58,7 +50,7 @@ void MainWindow::onLineEditReturnPressed(){
     QString qstr = QString::fromStdString("\n" + game.nearlyProcessCommand(text.toStdString()));
 
     Console1->setText(qstr + Console1->toPlainText());
-//    Console2->setText(Console2->toPlainText() + qstr);
+    Console2->setText(qstr + Console2->toPlainText());
     myTextField->setText("");
         }
 
@@ -70,7 +62,7 @@ void MainWindow::onButtonPressed(){
         QString qstr = QString::fromStdString(game.go(buttonName.toStdString()));
         // Pushes what was text in cout, puts the returned text into the Console on the GUI
         Console1->setText(qstr + Console1->toPlainText());
-//        Console2->setText(qstr);
+        Console2->setText(qstr + Console2->toPlainText());
 
     }
 }
@@ -82,6 +74,6 @@ void MainWindow::onProcessButtonPressed(){
         // Converting String from qString to Regular String
         QString qstr = QString::fromStdString(game.nearlyProcessCommand(buttonName.toStdString()));
         Console1->setText(qstr + "\n" + Console1->toPlainText());
-//        Console2->setText(qstr);
+        Console2->setText(qstr + "\n" + Console2->toPlainText());
     }
 }

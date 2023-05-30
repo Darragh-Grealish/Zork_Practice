@@ -7,9 +7,6 @@
 #include "ZorkUL.h"
 #include <QPushButton>
 #include <QObject>
-//#include <QtMultimedia>
-//#include <QAudioOutput>
-//#include <QMediaPlayer>
 
 
 QT_BEGIN_NAMESPACE
@@ -28,13 +25,11 @@ private:
     Ui::MainWindow *ui;
     QLineEdit *myTextField;
     QTextBrowser *Console1;
-//    QTextBrowser *Console2;
+    QTextBrowser *Console2;
     QPushButton *goUp;
     // Global variable, avaliable for all functions in cpp
     ZorkUL game;
     Parser parser;
-//    QMediaPlayer *player;
-//    QAudioOutput *audioOutput;
 
 private slots: // Recieve signals
     void onLineEditReturnPressed();

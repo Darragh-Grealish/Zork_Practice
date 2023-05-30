@@ -15,7 +15,7 @@ private:
 public:
     void addItems(Item *Item);
     void putItems(Item *Item);
-    Item hasItem(string name);
+    Item hasItem(Item *Item);
     int getItemIndex(Item *item);
 
 public:

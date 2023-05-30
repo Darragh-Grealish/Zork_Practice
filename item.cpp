@@ -12,6 +12,11 @@ Item::Item(string inDescription) {
 	description = inDescription;
 }
 
+// OVERLOADED operator
+bool Item::operator==(const Item &other) const {
+    return description == other.description;
+}
+
 //Class name :: Method
 void Item::setWeight(int inWeightGrams)
 {
