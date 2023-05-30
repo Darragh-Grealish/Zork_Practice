@@ -27,17 +27,18 @@ private:
     inline string printHelp(){
         return "valid inputs are; " + parser.showCommands();
     }
-
-    string goRoom(Command command);
     void createItems();
     void displayItems();
+
+protected:
+    string goRoom(Command command);
 
 public:
 	ZorkUL();
 	void play();
     string printWelcome();
+    string hello = "hello I am a global variable ...\n";
 	string go(string direction);
-    string processCommand2(string commando2);
     string nearlyProcessCommand(string someCommand);
 
 
@@ -46,4 +47,4 @@ public:
 };
 
 
-#endif /*ZORKUL_H_*/
+#endif //ZORKUL_H_

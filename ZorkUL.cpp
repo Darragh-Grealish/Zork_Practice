@@ -101,8 +101,8 @@ void ZorkUL::play() {
 	cout << endl;
 	cout << "end" << endl;
 }
-
-// Copy Constructor with Initializer list
+// ---------------------------------------Shoe Horn----------------------------------------------------------------
+// Copy Constructor with Initializer list, inheritance and C++ Object Construction Sequence
 class A3
 {
 public:
@@ -143,7 +143,7 @@ string ZorkUL::printWelcome() {
                        "The kids later break into the museum to search for clues, after learning that the archaeologist "
                        "who was transporting the suit is missing, and they heard that the knight's armor has come to life.\n";
     string theStartString = "starting... \ntype info for help \n";
-    return  theStartString + storyTitle + storyLine + currentRoom->longDescription();
+    return  hello + theStartString + storyTitle + storyLine + currentRoom->longDescription();
 }
 
 /**
@@ -158,16 +158,27 @@ string ZorkUL::nearlyProcessCommand(string someCommand) {
     return answer;
     delete command;
 }
+//------------------------------------------Custom Exception------------------------------------------
+class MyException : public std::exception {
+public:
+    const char* what() const throw() {
+    return "My custom exception";
+    }
+};
 //------------------------------------------Processor------------------------------------------
 string ZorkUL::processCommand(Command command) {
     if (command.isUnknown()) {
         return "invalid input --";
     }
 	string commandWord = command.getCommandWord();
+    if (commandWord.compare("customException") == 0){
+            throw MyException();
+            return ".";
+        }
 //------------------------------------------INFO------------------------------------------
 	if (commandWord.compare("info") == 0)      
     //    printHelp()
-        return "\n""valid inputs are; \ngo quit info map take put inventory";
+        return "\n""valid inputs are; \ngo quit info map take put inventory customException";
 //------------------------------------------MAP------------------------------------------
     else if (commandWord.compare("map") == 0)
 		{
