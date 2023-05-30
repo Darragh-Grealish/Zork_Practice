@@ -102,7 +102,16 @@ void ZorkUL::play() {
 	cout << "end" << endl;
 }
 // ---------------------------------------Shoe Horn----------------------------------------------------------------
-// Copy Constructor with Initializer list, inheritance and C++ Object Construction Sequence
+// Copy Constructor with Initializer list, multpile inheritance and C++ Object Construction Sequence
+class A2
+{
+public:
+    A2(string name)
+    {
+cout << name << " Constructor A2 \n" << endl;
+    }
+};
+
 class A3
 {
 public:
@@ -115,10 +124,10 @@ public:
     }
 };
 
-class S: public A3
+class S: public A2, public A3
 {
 public:
-    S(string name) : A3(name)
+    S(string name) : A2(name), A3(name)
     {
     cout << name << " Constructor S \n" << endl;
     }
@@ -126,22 +135,20 @@ public:
     cout << "Destructor S \n" << endl;
     }
 };
-
+// ----------Bit Structure-----------
 struct St2 {
     unsigned int theDate : 5;
 };
 
 string ZorkUL::printWelcome() {
-
-    Parser p;
-    ZorkUL z;
-    string helloToConsole = z.modifyHello(p);
-
     string name = "name";
     S obj(name);
     St2 myObj;
     myObj.theDate = 31;
     cout << "Date using bit structer " << myObj.theDate << "\n" << endl;
+    Parser p;
+    ZorkUL z;
+    string helloToConsole = z.modifyHello(p);
     string storyTitle = "C++ game developed by Darragh Grealish\n Based on the Scooby Doo Episode 'What a night for a Kight' \n";
     string storyLine = "When Scooby and Shaggy are walking home from the movies, they "
                        "discover a black suit of armor in a pickup truck, and the gang deliver it to the local museum. "
