@@ -46,5 +46,5 @@ Command* Parser::getCommand(string txt) {
  * Print out a list of valid command words.
  */
 string Parser::showCommands() {
-	commands->showAll();
+    return commands->showAll();
 }
