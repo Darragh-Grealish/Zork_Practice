@@ -12,6 +12,8 @@ public:
 	Parser();
     Command* getCommand(string txt);
     string showCommands();
+    string hello(){return "hello I am a global variable ...\n";}
+    friend class ZorkUL;
 };
 
 #endif /*PARSER_H_*/

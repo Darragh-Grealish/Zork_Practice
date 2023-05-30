@@ -132,6 +132,11 @@ struct St2 {
 };
 
 string ZorkUL::printWelcome() {
+
+    Parser p;
+    ZorkUL z;
+    string helloToConsole = z.modifyHello(p);
+
     string name = "name";
     S obj(name);
     St2 myObj;
@@ -143,7 +148,7 @@ string ZorkUL::printWelcome() {
                        "The kids later break into the museum to search for clues, after learning that the archaeologist "
                        "who was transporting the suit is missing, and they heard that the knight's armor has come to life.\n";
     string theStartString = "starting... \ntype info for help \n";
-    return  hello + theStartString + storyTitle + storyLine + currentRoom->longDescription();
+    return  helloToConsole + theStartString + storyTitle + storyLine + currentRoom->longDescription();
 }
 
 /**

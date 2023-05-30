@@ -37,7 +37,7 @@ public:
 	ZorkUL();
 	void play();
     string printWelcome();
-    string hello = "hello I am a global variable ...\n";
+    string modifyHello(Parser&) {return "hello I am a global variable modified ...\n";};
 	string go(string direction);
     string nearlyProcessCommand(string someCommand);
 
