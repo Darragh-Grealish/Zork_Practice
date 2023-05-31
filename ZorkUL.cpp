@@ -139,6 +139,28 @@ public:
 struct St2 {
     unsigned int theDate : 5;
 };
+// ---------Virtual and Pure Virtual (Abstract class)--------------
+class Wepon {
+public:
+    virtual void potentialDamage() //= 0; // Pure Virtual
+    {
+    cout << "Wepon Damage \n" << endl; // Virtual, ment to be overiden
+    }
+};
+
+class Gun : public Wepon {
+public:
+    void potentialDamage() {
+    cout << "Gun Damage \n" << endl;
+    }
+};
+
+class Sword : public Wepon {
+public:
+    void potentialDamage() {
+    cout << "Sword Damage \n" << endl;
+    }
+};
 
 string ZorkUL::printWelcome() {
     string name = "name";
@@ -146,9 +168,16 @@ string ZorkUL::printWelcome() {
     St2 myObj;
     myObj.theDate = 31;
     cout << "Date using bit structer " << myObj.theDate << "\n" << endl;
+
     Parser p;
     ZorkUL z;
     string helloToConsole = z.modifyHello(p);
+
+    Wepon* g1 = new Gun();
+    Wepon* s2 = new Sword();
+    g1->potentialDamage();
+    s2->potentialDamage();
+
     string storyTitle = "C++ game developed by Darragh Grealish\n Based on the Scooby Doo Episode 'What a night for a Kight' \n";
     string storyLine = "When Scooby and Shaggy are walking home from the movies, they "
                        "discover a black suit of armor in a pickup truck, and the gang deliver it to the local museum. "
@@ -157,6 +186,8 @@ string ZorkUL::printWelcome() {
     string theStartString = "starting... \ntype info for help \n";
     return  helloToConsole + theStartString + storyTitle + storyLine + currentRoom->longDescription();
 }
+
+
 
 /**
  * Given a command, process (that is: execute) the command.
